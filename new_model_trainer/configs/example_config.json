@@ -1,0 +1,41 @@
+{
+    "model_name": "MyLSTMModel_Example",
+    "output_dir": "training_output/my_lstm_model",
+
+    "epochs": 150,
+    "batch_size": 16,
+    "learning_rate": 0.0007,
+    "device": "cuda",
+    "early_stopping_patience": 15,
+    "log_interval": 10,
+    "grad_clip_value": 1.0,
+    "optimizer": "AdamW",
+    "scheduler": "ReduceLROnPlateau",
+    "resume_from_latest": false,
+
+    "hidden_size": 24,
+    "num_layers": 1,
+    "skip_connection": true,
+
+    "sequence_length": 4096,
+    "sample_rate": 48000,
+    "validation_split": 0.15,
+
+    "conditioning_params": null,
+
+    "loss_functions": {
+        "ESR": {
+            "weight": 0.85,
+            "params": {"epsilon": 1e-7}
+        },
+        "DC": {
+            "weight": 0.15
+        }
+    },
+    "pre_emphasis": {
+        "apply": true,
+        "type": "aw"
+    },
+
+    "model_version": "1.0.0-example"
+}
