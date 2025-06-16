@@ -1,41 +1,57 @@
 {
-    "model_name": "MyLSTMModel_Example",
-    "output_dir": "training_output/my_lstm_model",
+    "model_name": "MyConditionedLSTM_Example",
+    "output_dir": "training_output/my_conditioned_lstm",
+    "model_version": "1.0.1-conditioned",
 
-    "epochs": 150,
-    "batch_size": 16,
-    "learning_rate": 0.0007,
-    "device": "cuda",
-    "early_stopping_patience": 15,
-    "log_interval": 10,
+    "epochs": 5,
+    "batch_size": 8,
+    "learning_rate": 0.0005,
+    "device": "cpu",
+    "early_stopping_patience": 5,
+    "log_interval": 5,
     "grad_clip_value": 1.0,
     "optimizer": "AdamW",
     "scheduler": "ReduceLROnPlateau",
     "resume_from_latest": false,
 
-    "hidden_size": 24,
+    "hidden_size": 20,
     "num_layers": 1,
     "skip_connection": true,
 
-    "sequence_length": 4096,
+    "sequence_length": 2048,
     "sample_rate": 48000,
-    "validation_split": 0.15,
+    "validation_split": 0.2,
 
-    "conditioning_params": null,
+    "num_conditioning_params": 2,
+    "dataset_items": [
+        {
+            "input_path": "path/to/your/common_di_input.wav",
+            "target_path": "path/to/your/target_gain0.1_tone0.2.wav",
+            "conditioning_values": [0.1, 0.2]
+        },
+        {
+            "input_path": "path/to/your/common_di_input.wav",
+            "target_path": "path/to/your/target_gain0.5_tone0.6.wav",
+            "conditioning_values": [0.5, 0.6]
+        },
+        {
+            "input_path": "path/to/your/common_di_input.wav",
+            "target_path": "path/to/your/target_gain0.9_tone0.8.wav",
+            "conditioning_values": [0.9, 0.8]
+        }
+    ],
 
     "loss_functions": {
         "ESR": {
-            "weight": 0.85,
+            "weight": 0.9,
             "params": {"epsilon": 1e-7}
         },
         "DC": {
-            "weight": 0.15
+            "weight": 0.1
         }
     },
     "pre_emphasis": {
         "apply": true,
         "type": "aw"
-    },
-
-    "model_version": "1.0.0-example"
+    }
 }
