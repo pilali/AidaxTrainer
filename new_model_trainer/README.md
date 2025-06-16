@@ -187,3 +187,13 @@ Since automated end-to-end testing (including model loading in an LV2 host) is c
 6.  **(External) Test in AidaDSP:** If possible, load the generated `.aidax` file into the AidaDSP LV2 plugin in a compatible host to ensure it loads and processes audio.
 
 This completes the primary documentation for the new model trainer.
+
+## Colab Notebook for Training
+
+A Jupyter Notebook named `New_AIDA_X_Trainer_Colab.ipynb` is available within this (`new_model_trainer`) directory. This notebook provides an interactive environment to:
+*   Set up the necessary dependencies.
+*   Connect to your Google Drive for data and configuration.
+*   Configure and run the training script.
+*   Download the final `.aidax` model.
+
+This is particularly useful for leveraging Google Colab's free GPU resources for training. To use it, upload this notebook to your Google Colab account, or navigate to it if you have cloned the repository in Colab.
